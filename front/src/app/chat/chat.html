@@ -1,0 +1,31 @@
+<div class="chat-container">
+  <div *ngIf="!isConnected">
+    <h2>Join the Customer Service Chat</h2>
+    <input [(ngModel)]="username" placeholder="Your Username" />
+    <button (click)="connect()">Connect</button>
+  </div>
+
+  <div *ngIf="isConnected">
+    <h2>Customer Service chat (as {{ username }})</h2>
+    <button (click)="disconnect()">Disconnect</button>
+
+    <div class="message-area">
+      <div
+        *ngFor="let msg of messages"
+        class="message"
+        [ngClass]="{ sent: msg.from === username, received: msg.from !== username }"
+      >
+        <strong>{{ msg.from }}:</strong> {{ msg.content }}
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input
+        [(ngModel)]="messageContent"
+        (keyup.enter)="sendMessage()"
+        placeholder="Type a message..."
+      />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
