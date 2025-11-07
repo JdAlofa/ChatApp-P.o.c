@@ -42,7 +42,7 @@ CREATE TABLE vehicles (
 -- Table for Reservations
 -- A reservation is made by one client for one vehicle.
 CREATE TABLE reservations (
-    reservations_id INT AUTO_INCREMENT PRIMARY KEY,
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY,
     beginning_date DATE NOT NULL,
     end_date DATE NOT NULL,
     amount_paid DECIMAL(10, 2) NOT NULL,
